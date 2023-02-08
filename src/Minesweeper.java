@@ -41,6 +41,20 @@ public class Minesweeper {
         while (x < grid.length) {
             int y = 0;
             while (y < grid.length) {
+                if (!revealed[x][y]) {
+                    StdDraw.setPenColor(StdDraw.BLUE);
+                    StdDraw.filledSquare(x, y, 0.5);
+                    StdDraw.setPenColor(StdDraw.BLACK);
+                }
+                else if (grid[x][y]) {
+                    StdDraw.setPenColor(StdDraw.RED);
+                    StdDraw.filledCircle(x, y, 0.3);
+                    StdDraw.setPenColor(StdDraw.BLACK);
+                }
+                else {
+                    int count = countNeighboringMines(grid, x, y);
+                    if (count != 0) StdDraw.text(x, y, "" + count);
+                }
                 StdDraw.square(x, y, 0.5);
                 y = y + 1;
             }
@@ -48,8 +62,20 @@ public class Minesweeper {
         }
     }
 
+    public static int countNeighboringMines(boolean[][] grid, int x, int y) {
+        return 0;
+    }
+
     public static void initMinefield(int numMines, boolean[][] grid) {
-        int x = StdRandom.uniformInt(grid.length);
+        for (int n = 0; n < numMines; ++n) {
+            int x = StdRandom.uniformInt(grid.length);
+            int y = StdRandom.uniformInt(grid.length);
+            if (grid[x][y]) {
+                --n;
+                continue;
+            }
+            grid[x][y] = true;
+        }
     }
 
 }

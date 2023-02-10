@@ -63,7 +63,15 @@ public class Minesweeper {
     }
 
     public static int countNeighboringMines(boolean[][] grid, int x, int y) {
-        return 0;
+        int count = 0;
+        for (int y2 = y - 1; y2 <= y + 1; ++y2) {
+            for (int x2 = x - 1; x2 <= x + 1; ++x2) {
+                if (y2 >= 0 && y2 < grid.length && x2 >= 0 && x2 < grid.length) {
+                    if (grid[x2][y2]) ++count;
+                }
+            }
+        }
+        return count;
     }
 
     public static void initMinefield(int numMines, boolean[][] grid) {

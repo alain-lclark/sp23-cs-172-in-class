@@ -24,5 +24,7 @@ class MinesweeperTest {
                 { false, false, false },
                 { false, false, false }
         };
+        assertEquals(1, Minesweeper.countNeighboringMines(grid, 1, 1));
+        assertEquals(1, Minesweeper.countNeighboringMines(grid, 0, 0));
     }
 }

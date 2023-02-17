@@ -39,6 +39,24 @@ public class Minesweeper {
     }
 
     public static void handleMouseClick(boolean[][] grid, boolean[][] revealed) {
+        // Wait for the user to press on the mouse button
+        while (!StdDraw.isMousePressed()) {
+            // do nothing!  on purpose!
+        }
+
+        int x = (int)Math.round(StdDraw.mouseX());
+        int y = (int)Math.round(StdDraw.mouseY());
+
+        // Wait for the user to release the mouse button
+        while (StdDraw.isMousePressed()) {
+            // do nothing!  on purpose!
+        }
+
+        uncover(grid, revealed, x, y);
+
+        if (grid[x][y]) {
+            StdOut.println("BOOM");
+        }
     }
 
     public static void drawMinefield(boolean[][] grid, boolean[][] revealed) {

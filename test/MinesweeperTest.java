@@ -27,4 +27,35 @@ class MinesweeperTest {
         assertEquals(1, Minesweeper.countNeighboringMines(grid, 1, 1));
         assertEquals(1, Minesweeper.countNeighboringMines(grid, 0, 0));
     }
+
+    @Test
+    void hasWon() {
+        boolean[][] grid = {
+                { false,  true, false },
+                { false, false, false },
+                { false, false, false }
+        };
+        boolean[][] revealed = {
+                {  true, false,  true },
+                {  true,  true,  true },
+                {  true,  true,  true }
+        };
+        assertTrue(Minesweeper.hasWon(grid, revealed));
+    }
+
+    @Test
+    void hasNotYetWon() {
+        boolean[][] grid = {
+                { false,  true, false },
+                { false, false, false },
+                { false, false, false }
+        };
+        boolean[][] revealed = {
+                { true,  false, false },
+                { true,   true, false },
+                { true,   true, false }
+        };
+        assertFalse(Minesweeper.hasWon(grid, revealed));
+    }
+
 }

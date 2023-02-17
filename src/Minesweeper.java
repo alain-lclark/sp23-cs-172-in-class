@@ -30,7 +30,12 @@ public class Minesweeper {
     }
 
     public static boolean hasWon(boolean[][] grid, boolean[][] revealed) {
-        return false;
+        for (int x = 0; x < grid.length; ++x) {
+            for (int y = 0; y < grid.length; ++y) {
+                if (grid[x][y] && revealed[x][y] || !grid[x][y] && !revealed[x][y]) return false;
+            }
+        }
+        return true;
     }
 
     public static void handleMouseClick(boolean[][] grid, boolean[][] revealed) {
@@ -86,4 +91,7 @@ public class Minesweeper {
         }
     }
 
+    public static void uncover(boolean[][] grid, boolean[][] revealed, int x, int y) {
+        revealed[x][y] = true;
+    }
 }

@@ -60,6 +60,7 @@ public class Minesweeper {
     }
 
     public static void drawMinefield(boolean[][] grid, boolean[][] revealed) {
+        StdDraw.clear();
         int x = 0;
         while (x < grid.length) {
             int y = 0;

@@ -111,6 +111,34 @@ public class Minesweeper {
     }
 
     public static void uncover(boolean[][] grid, boolean[][] revealed, int x, int y) {
-        revealed[x][y] = true;
+        if (!revealed[x][y]) {
+            revealed[x][y] = true;
+            if (countNeighboringMines(grid, x, y) == 0) {
+                for (int x1 = x - 1; x1 <= x + 1; ++x1) {
+                    for (int y1 = y - 1; y1 <= y + 1; ++y1) {
+                        if (x1 >= 0 && x1 < grid.length && y1 >= 0 && y1 < grid.length) {
+                            uncover(grid, revealed, x1, y1);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

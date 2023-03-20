@@ -1,10 +1,8 @@
 public class UseComplex {
-    static Complex createComplex(double r, double i) {
-        Complex c = new Complex();
-        c.real = r;
-        c.imaginary = i;
-        return c;
-    }
+//    static Complex createComplex(double r, double i) {
+//        Complex c = new Complex(r, i);
+//        return c;
+//    }
 
     static double add(double a, double b) {
         double result;
@@ -12,9 +10,7 @@ public class UseComplex {
         return result;
     }
     static Complex add(Complex a, Complex b) {
-        Complex c = new Complex();
-        c.real = a.real + b.real;
-        c.imaginary = a.imaginary + b.imaginary;
+        Complex c = new Complex(a.real + b.real, a.imaginary + b.imaginary);
         return c;
     }
 
@@ -23,10 +19,10 @@ public class UseComplex {
     }
 
     public static void main(String[] unused) {
-        Complex c = createComplex(1., 1.);
+        Complex c = new Complex(1., 1.);
         StdOut.println("c = " + toString(c));
-        Complex c1 = createComplex(-1, 3.5);
-        Complex c2 = add(c, c1);
+        Complex c1 = new Complex(-1, 3.5);
+        Complex c2 = c.plus(c1);
         StdOut.println("c2 = " + toString(c2));
         StdOut.println(c);
         StdOut.println(c1);
@@ -38,7 +34,7 @@ public class UseComplex {
         v[2] = null;
         v[3] = null;
         for (int i = 0; i < v.length; ++i) {
-            v[i] = createComplex(StdRandom.gaussian(), StdRandom.gaussian());
+            v[i] = new Complex(StdRandom.gaussian(), StdRandom.gaussian());
         }
         for (int i = 0; i < v.length; ++i) {
             StdOut.println(toString(v[i]));

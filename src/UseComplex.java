@@ -39,5 +39,21 @@ public class UseComplex {
         for (int i = 0; i < v.length; ++i) {
             StdOut.println(toString(v[i]));
         }
+        Complex zero = new Complex();
+
+        Complex a = new Complex(1.0, 1.0);
+        Complex b = new Complex(1.0, 1.0);
+        if (a == b) {
+            StdOut.println("They are the same!");
+        }
+        else {
+            StdOut.println("They are not");
+        }
+        if (a.equals(b)) {
+            StdOut.println("They are the same!");
+        }
+        else {
+            StdOut.println("They are not");
+        }
     }
 }

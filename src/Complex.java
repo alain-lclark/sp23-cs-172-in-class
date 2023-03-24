@@ -45,4 +45,13 @@ public class Complex {
     public String toString() {
         return "(" + this.real + ", " + this.imaginary + ")";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return complex.real == this.real && complex.imaginary == this.imaginary;
+    }
+
 }

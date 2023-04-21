@@ -1,4 +1,6 @@
-public class LinkedStack<T> {
+import java.util.Iterator;
+
+public class LinkedStack<T> implements Iterable<T> {
 
     private class Node {
         T item;
@@ -36,13 +38,35 @@ public class LinkedStack<T> {
         return oldTop.item;
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new LinkedStackIterator();
+    }
+
+    private class LinkedStackIterator implements Iterator<T> {
+
+        Node current = top;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            Node n = current;
+            current = current.next;
+            return n.item;
+        }
+    }
+
     public static void main(String[] unused) {
         // A stack of Strings (deduced from context)
         LinkedStack s = new LinkedStack();
         s.push("first");  // the compiler deduces at this stage that we want a stack of Strings
         s.push("second");
-        s.pop();
-        s.pop();
+        //s.pop();
+        //s.pop();
         if (s.isEmpty()) {
             StdOut.println("My stack is empty");
         }
@@ -65,6 +89,17 @@ public class LinkedStack<T> {
 
         // Explicit declaration of a stack of Doubles
         LinkedStack s2 = new LinkedStack<Double>();
+
+        // For each loop: iterate over all elements of the array a
+        String[] a = { "hello", "bonjour", "bye", "servus", "arriverderci" };
+        for (var str : a) {
+            StdOut.println(str);
+        }
+
+        // For each loop: iterate over all elements of our stack
+        for (var e : s) {
+            StdOut.println(e);
+        }
     }
 
 }

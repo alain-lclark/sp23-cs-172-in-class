@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class LinkedStack<T> implements Iterable<T> {
+public class LinkedStack<T> implements Stack<T> {
 
     private class Node {
         T item;
@@ -62,7 +62,7 @@ public class LinkedStack<T> implements Iterable<T> {
 
     public static void main(String[] unused) {
         // A stack of Strings (deduced from context)
-        LinkedStack s = new LinkedStack();
+        Stack s = new LinkedStack();
         s.push("first");  // the compiler deduces at this stage that we want a stack of Strings
         s.push("second");
         //s.pop();
@@ -75,7 +75,7 @@ public class LinkedStack<T> implements Iterable<T> {
         }
 
         // A stack of Integers (deduced from context)
-        LinkedStack s1 = new LinkedStack();
+        Stack s1 = new LinkedStack();
         s.push(1);  // the compiler deduces at this stage that we want a stack of Integers
         s.push(2);
         s.pop();
@@ -88,7 +88,7 @@ public class LinkedStack<T> implements Iterable<T> {
         }
 
         // Explicit declaration of a stack of Doubles
-        LinkedStack s2 = new LinkedStack<Double>();
+        Stack s2 = new LinkedStack<Double>();
 
         // For each loop: iterate over all elements of the array a
         String[] a = { "hello", "bonjour", "bye", "servus", "arriverderci" };

@@ -36,7 +36,11 @@ public class ArrayStack<T> implements Stack<T> {
      * @return the last string that was pushed onto the stack
      */
     public T pop() {
-        return stack[--n];
+        T s = stack[n - 1];
+        stack[n - 1] = null;  // avoid loitering
+        n--;
+        if (n > 0 && n == stack.length/4) resize(stack.length/2);
+        return s;
     }
 
     public static void main(String[] unused) {
@@ -67,7 +71,13 @@ public class ArrayStack<T> implements Stack<T> {
         }
 
         // Explicit declaration of a stack of Doubles
-        ArrayStack s2 = new ArrayStack<Double>();
+        // We can only use a "reference" type as a parameter to a generic type
+        // In particular, a primitive type (e.g., double) cannot be used that way
+        // Luckily, all primitive types have their corresponding wrapper types, e.g.,
+        // double ==> Double, boolean ==> Boolean, char ==> Character, int ==> Integer
+        ArrayStack s2 = new ArrayStack<Integer>();
+        Integer i = 2;  // Wrapper type initialized with a int literal (Java auto-wraps the int in an object)
+        int i1 = i;     // Access the content of wrapper (Java calls the getter, .intValue(), auto-magically)
     }
 
     @Override
